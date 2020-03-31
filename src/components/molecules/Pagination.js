@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import {maxResultsPerPageValues} from "../../constants";
 
 const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) => {
     let pages = 0;
@@ -36,21 +37,15 @@ const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) =
                 </>}
             </div>
             <div className="pagination__limits">
-                <input type="radio" name="setPagesLimit"
-                       value={4}
-                       checked={resultsPerPage === '4'}
-                       onChange={handleResultsPerPageChange}/>
-                <span>4</span>
-                <input type="radio" name="setPagesLimit"
-                       value={8}
-                       checked={resultsPerPage === '8'}
-                       onChange={handleResultsPerPageChange}/>
-                <span>8</span>
-                <input type="radio" name="setPagesLimit"
-                       value={12}
-                       checked={resultsPerPage === '12'}
-                       onChange={handleResultsPerPageChange}/>
-                <span>12</span>
+                {maxResultsPerPageValues.map(e => (
+                    <React.Fragment key={e}>
+                        <input type="radio" name="setPagesLimit"
+                               value={e}
+                               checked={resultsPerPage === e}
+                               onChange={handleResultsPerPageChange}/>
+                        <span>{e}</span>
+                    </React.Fragment>
+                ))}
             </div>
 
         </>

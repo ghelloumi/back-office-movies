@@ -18,3 +18,5 @@ export const ACTIONS = {
     TOGGLE_LIKE_MOVIE_ACTION: 'TOGGLE_LIKE_MOVIE_ACTION',
     UPDATE_CATEGORY_TO_SHOW_ACTION: 'UPDATE_CATEGORY_TO_SHOW_ACTION'
 }
+
+export const maxResultsPerPageValues = ['4', '8', '12']
