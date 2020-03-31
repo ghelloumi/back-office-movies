@@ -12,8 +12,6 @@ const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) =
         handleChangeResultsLimit(e.currentTarget.value)
     }
 
-    console.log(resultsPerPage)
-
     return (
         <>
             <div className="pagination">

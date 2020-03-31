@@ -19,7 +19,6 @@ const getMoviesInitialList = (movies) => {
             liked: false,
             toShow: true
         })),
-        // categoriesList: [...new Set(movies.map(e => e.category))].map((e, i) => ({id: i, category: e}))
     }
 }
 
