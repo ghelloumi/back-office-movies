@@ -2,13 +2,28 @@ import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger'
 import reducers from "./reducers";
-import {movies} from '../movies'
+import {movies} from '../services/movies'
 
 const logger = createLogger({
     predicate: () => process.env.NODE_ENV === 'development'
 });
 
-export default function configureStore(preloadedStore = {moviesList: movies}) {
+const getMoviesInitialList = (movies) => {
+    return {
+        moviesList: movies.map(e => ({
+            id: e.id,
+            title: e.title,
+            category: e.category,
+            likes: e.likes,
+            dislikes: e.dislikes,
+            liked: false,
+            toShow: true
+        })),
+        // categoriesList: [...new Set(movies.map(e => e.category))].map((e, i) => ({id: i, category: e}))
+    }
+}
+
+export default function configureStore(preloadedStore = getMoviesInitialList(movies)) {
     return createStore(
         reducers,
         preloadedStore,

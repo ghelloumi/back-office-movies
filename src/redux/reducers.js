@@ -1,27 +1,25 @@
 import {ACTIONS} from "../constants";
 import {combineReducers} from "redux";
 
-const initialMoviesState = {
-    data: []
-}
+const initialMoviesState = []
 
 const moviesList = (state = initialMoviesState, action) => {
-    return state
-
-    // switch (action.type) {
-    //     case ACTIONS.ADD_POKEMON_TO_FAVLIST_ACTION:
-    //         return {
-    //             ...state,
-    //             data: [...state.data, action.name]
-    //         }
-    //     case ACTIONS.REMOVE_POKEMON_TO_FAVLIST_ACTION:
-    //         return {
-    //             ...state,
-    //             data: state.data.filter(name => name !== action.name)
-    //         }
-    //     default:
-    //         return state;
-    // }
+    switch (action.type) {
+        case ACTIONS.REMOVE_MOVIE_ACTION:
+            return state.filter(e => e.id !== action.id)
+        case ACTIONS.TOGGLE_LIKE_MOVIE_ACTION:
+            const movie = state.find(e => e.id === action.id)
+            return state.map(e => e.id !== action.id ? e : {
+                ...e,
+                liked: !movie.liked,
+                likes: e.likes + (movie.liked ? -1 : 1),
+                dislikes: e.dislikes + (movie.liked ? 1 : movie.liked !== 0 ? -1 : 0)
+            })
+        case ACTIONS.UPDATE_CATEGORY_TO_SHOW_ACTION:
+            return state.map(e => action.categories.includes(e.category) ? {...e, toShow: true} : {...e, toShow: false})
+        default:
+            return state;
+    }
 }
 
 const reducers = combineReducers({

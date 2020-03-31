@@ -3,7 +3,15 @@
   align-items: center;
   justify-content: center;
 
-  > div, > a {
+  > div:first-of-type, > a {
     @include paginationButtons();
+  }
+
+  &__limits {
+    margin: 1rem;
+
+    > span {
+      margin-right: 1rem;
+    }
   }
 }
