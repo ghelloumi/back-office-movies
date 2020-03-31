@@ -1,0 +1,8 @@
+.movies {
+  margin-top: 4rem;
+
+  > div {
+    @include flexCenter();
+    flex-direction: column;
+  }
+}

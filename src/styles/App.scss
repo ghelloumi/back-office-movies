@@ -1,0 +1,48 @@
+@import "./mixins";
+@import "./molecules/index";
+@import "./organisms/index";
+
+body {
+  margin: 0;
+  font-family: 'Baloo Thambi 2', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fafafa;
+}
+
+.App {
+  text-align: center;
+
+  &__header {
+    background: #fbfbfb;
+    font-weight: 600;
+    overflow: hidden;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width: 100vw;
+    top: 0;
+    box-shadow: 0 0 1rem #c3c3c3;
+    height: 2rem;
+    z-index: 1;
+
+    > span {
+      color: #F44336;
+      margin-left: 2rem;
+      line-height: 1rem;
+      font-weight: 600;
+
+      > span {
+        color: #484848;
+        margin-left: 2rem;
+      }
+    }
+
+    > img {
+      height: 6rem;
+      position: absolute;
+      opacity: 0.2;
+      left: -1.4rem;
+    }
+  }
+}

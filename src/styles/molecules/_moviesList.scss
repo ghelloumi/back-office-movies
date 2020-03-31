@@ -1,0 +1,10 @@
+.movies__list {
+  display: flex;
+  flex-wrap: wrap;
+  @include flexCenter();
+
+  > div {
+    @include flexCenter();
+    flex-wrap: wrap;
+  }
+}

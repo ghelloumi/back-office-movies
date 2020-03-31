@@ -1,0 +1,27 @@
+.categories {
+  padding: .3rem 1rem;
+  display: flex;
+  align-items: center;
+  @include boxThemes();
+
+  > span {
+    padding: 0 1rem;
+    color: #484848;
+  }
+
+  > select {
+    overflow: hidden;
+    background: none;
+    outline: none;
+    border: 1px solid #d6d6d6;
+    border-radius: 0.4rem;
+
+    > option {
+      padding: .2rem .5rem;
+      text-align: center;
+      &:checked {
+        background: #acacac;
+      }
+    }
+  }
+}

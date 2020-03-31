@@ -1,0 +1,25 @@
+@mixin boxThemes() {
+  background: #fbfbfb;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem #e3e3e3;
+}
+
+@mixin paginationButtons() {
+  padding: .4em .6em;
+  margin: .2em;
+  overflow: hidden;
+  background: #efefef;
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all ease .2s;
+  font-weight: 600;
+  color: #292929;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
