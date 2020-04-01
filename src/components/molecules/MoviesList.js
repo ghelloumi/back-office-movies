@@ -8,10 +8,10 @@ import Categories from "./Categories";
 import Loader from "../atoms/Loader";
 
 const MoviesList = (props) => {
+    const {pending, moviesRes, error} = useSelector(state => state.moviesData);
     const [resultsPerPage, setResultsPerPage] = useState('4')
     const pageId = props.match.params.id
     const dispatch = useDispatch()
-    const {pending, moviesRes, error} = useSelector(state => state.moviesData);
 
     useEffect(() => {
         dispatch(getMovies())
@@ -44,22 +44,26 @@ const MoviesList = (props) => {
         )
     }
 
+    const moviesToShow = moviesRes.filter(e => e.toShow)
+
     return (
         <>
             <div>
                 <Categories moviesRes={moviesRes}/>
             </div>
             <div className="movies__list">
-                {moviesRes.filter(e => e.toShow).map((movie, i) => (
+                {moviesToShow.map((movie, i) => (
                     movieCardsShow(movie, i) &&
                     <MovieCard key={movie.id} movie={movie}
                                handleRemove={() => handleRemove(movie.id)}
                                handleToggleLike={() => handleToggleLike(movie.id)}/>
                 ))}
             </div>
-            <Pagination count={moviesRes.length} pageId={pageId}
+            <Pagination count={moviesToShow.length} pageId={pageId}
                         handleChangeResultsLimit={handleChangeResultsLimit}
-                        resultsPerPage={resultsPerPage}/>
+                        resultsPerPage={resultsPerPage}
+                        history={props.history}
+            />
         </>
     )
 }

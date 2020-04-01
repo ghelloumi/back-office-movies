@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {maxResultsPerPageValues} from "../../constants";
 
-const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) => {
+const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage, history}) => {
     let pages = 0;
-
+    
     if (count !== 0) {
-        pages = Math.ceil(count / resultsPerPage) ;
+        pages = Math.ceil(count / resultsPerPage);
+    }
+
+    if (pages < parseInt(pageId, 10) && pages) {
+        history.push(`/page/${pages}`)
     }
 
     const handleResultsPerPageChange = (e) => {
@@ -47,7 +51,6 @@ const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) =
                     </React.Fragment>
                 ))}
             </div>
-
         </>
     );
 }
