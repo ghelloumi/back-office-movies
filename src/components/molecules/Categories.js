@@ -1,10 +1,9 @@
-import React, {useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
+import React from "react"
+import {useDispatch} from "react-redux"
 import {updateCategoriesToShowAction} from "../../redux/actions";
 
-const Categories = () => {
-    const moviesList = useSelector(state => state.moviesList);
-    const categoriesList = [...new Set(moviesList.map(e => e.category))].map((e, i) => ({id: i, category: e}))
+const Categories = ({moviesRes}) => {
+    const categoriesList = [...new Set(moviesRes.map(e => e.category))].map((e, i) => ({id: i, category: e}))
     const dispatch = useDispatch()
 
     const handleChangeCategorySelection = (e) => {

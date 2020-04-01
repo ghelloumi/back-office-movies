@@ -1,5 +1,26 @@
 import {ACTIONS} from "../constants";
 
+// get movies Actions
+export const getMoviesActions = {
+    fetchMoviesPending: () => {
+        return {
+            type: ACTIONS.FETCH_MOVIES_PENDING
+        }
+    },
+    fetchMoviesSuccess: (moviesRes) => {
+        return {
+            type: ACTIONS.FETCH_MOVIES_SUCCESS,
+            moviesRes
+        }
+    },
+    fetchMoviesError: (error) => {
+        return {
+            type: ACTIONS.FETCH_MOVIES_ERROR,
+            error
+        }
+    }
+}
+
 export const removeMovieAction = (id) => {
     return {
         type: ACTIONS.REMOVE_MOVIE_ACTION,
@@ -20,4 +41,3 @@ export const updateCategoriesToShowAction = (categories) => {
         categories
     }
 }
-
