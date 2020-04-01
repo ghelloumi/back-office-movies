@@ -6,7 +6,7 @@ const Pagination = ({count, pageId, handleChangeResultsLimit, resultsPerPage}) =
     let pages = 0;
 
     if (count !== 0) {
-        pages = Math.ceil(count / resultsPerPage) -1;
+        pages = Math.ceil(count / resultsPerPage) ;
     }
 
     const handleResultsPerPageChange = (e) => {
